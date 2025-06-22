@@ -1,0 +1,22 @@
+// Mock data for demonstration
+export const mockData = {
+  cpu: 45,
+  memory: 68,
+  processes: 124,
+  githubPRs: 8,
+  webhooks: 156,
+  queuedJobs: 23,
+  errors: 2,
+  workflowRuns: 45,
+  issuesBlocked: 12,
+  prBlocked: 5,
+  apiUsage: 78,
+  uptime: 99.9,
+  botInstallations: 34,
+  repositories: 89,
+  issuesTriaged: 15,
+  prTriaged: 7,
+  assignedIssues: 23,
+  wipIssues: 8,
+  bugIssues: 19,
+};
