@@ -24,4 +24,4 @@ jobs:
         uses: GrantBirki/json-yaml-validate@v3.3.2
         with:
           comment: "true"
-          json_exclude_regex: "tsconfig\\.*\\.json$"
+          json_exclude_regex: "tsconfig\\..*\\.json$"
