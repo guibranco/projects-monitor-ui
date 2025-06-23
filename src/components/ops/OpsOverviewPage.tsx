@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Activity, Shield, Heart, Globe, Clock, Server, Zap, Calendar, CheckCircle, XCircle, AlertTriangle, ExternalLink, Hash, Terminal, GitBranch, Package, Users } from 'lucide-react';
+import { ArrowLeft, Activity, Shield, Heart, Globe, Clock, Server, Zap, Calendar, CheckCircle, XCircle, AlertTriangle, Hash, Terminal, GitBranch, Package, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Header } from '../dashboard/Header';
 import { Footer } from '../dashboard/Footer';
