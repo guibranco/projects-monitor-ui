@@ -501,7 +501,7 @@ export function ErrorsPage() {
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="flex items-center space-x-2">
                                 <Folder className="w-4 h-4 text-gray-400" />
-                                <span className="text-sm font-medium text-gray-900 dark:text-white font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                                <span className="text-sm font-medium text-gray-900 dark:text-white font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm">
                                   {error.directory}
                                 </span>
                               </div>
@@ -610,7 +610,7 @@ export function ErrorsPage() {
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="flex items-center space-x-1 text-sm text-gray-900 dark:text-white">
                                 <FileText className="w-4 h-4 text-gray-400" />
-                                <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded max-w-xs truncate" title={error.errorFile}>
+                                <span className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm max-w-xs truncate" title={error.errorFile}>
                                   {error.errorFile.split('/').pop()}
                                 </span>
                               </div>

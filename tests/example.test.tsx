@@ -11,7 +11,7 @@ describe('Button', () => {
     expect(button).toHaveClass('bg-blue-600');
   });
 
-  it('renders with outline variant', () => {
+  it('renders with outline-solid variant', () => {
     render(<Button variant="outline">Click me</Button>);
     const button = screen.getByRole('button', { name: /click me/i });
     expect(button).toBeInTheDocument();
