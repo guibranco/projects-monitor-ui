@@ -602,13 +602,13 @@ export function GStracciniPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center space-x-2">
                             <Hash className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-white">
+                            <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm text-gray-900 dark:text-white">
                               {installation.installationId}
                             </span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-white">
+                          <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm text-gray-900 dark:text-white">
                             {installation.clientId}
                           </span>
                         </td>

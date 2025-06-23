@@ -750,7 +750,7 @@ export function OpsOverviewPage() {
                         <td className="px-6 py-4">
                           <div className="text-sm text-gray-900 dark:text-white">
                             {domain.nameservers.map((ns, index) => (
-                              <div key={index} className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded mb-1">
+                              <div key={index} className="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm mb-1">
                                 {ns}
                               </div>
                             ))}
@@ -794,7 +794,7 @@ export function OpsOverviewPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center space-x-2">
                             <Hash className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-white">
+                            <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm text-gray-900 dark:text-white">
                               {job.expression}
                             </span>
                           </div>
@@ -802,7 +802,7 @@ export function OpsOverviewPage() {
                         <td className="px-6 py-4">
                           <div className="flex items-center space-x-2">
                             <Terminal className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-white max-w-xs truncate" title={job.command}>
+                            <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm text-gray-900 dark:text-white max-w-xs truncate" title={job.command}>
                               {job.command}
                             </span>
                           </div>
@@ -875,7 +875,7 @@ export function OpsOverviewPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center space-x-2">
                             <GitBranch className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-white">
+                            <span className="text-sm font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm text-gray-900 dark:text-white">
                               {build.branch}
                             </span>
                           </div>
@@ -939,7 +939,7 @@ export function OpsOverviewPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center space-x-2">
                             <Server className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm font-medium text-gray-900 dark:text-white font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                            <span className="text-sm font-medium text-gray-900 dark:text-white font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm">
                               {queue.serverName}
                             </span>
                           </div>

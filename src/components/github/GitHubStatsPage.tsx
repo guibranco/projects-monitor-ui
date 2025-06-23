@@ -685,7 +685,7 @@ export function GitHubStatsPage() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center space-x-2">
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <User className="w-4 h-4 text-gray-400" />
                       </div>
                       <span className="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
@@ -893,7 +893,7 @@ export function GitHubStatsPage() {
                       {mockIssuesData.map((issue, index) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                           <div className="flex items-center space-x-3">
-                            <div className="flex-shrink-0">
+                            <div className="shrink-0">
                               {issue.type === 'bug' && <Bug className="w-5 h-5 text-red-500" />}
                               {issue.type === 'blocked' && <XCircle className="w-5 h-5 text-red-500" />}
                               {issue.type === 'awaiting-triage' && <Clock className="w-5 h-5 text-yellow-500" />}
@@ -940,7 +940,7 @@ export function GitHubStatsPage() {
                       {mockPullRequestsData.map((pr, index) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                           <div className="flex items-center space-x-3">
-                            <div className="flex-shrink-0">
+                            <div className="shrink-0">
                               {pr.type === 'awaiting-triage' && <Clock className="w-5 h-5 text-yellow-500" />}
                               {pr.type === 'blocked' && <XCircle className="w-5 h-5 text-red-500" />}
                               {pr.type === 'ready-for-review' && <GitPullRequest className="w-5 h-5 text-blue-500" />}
@@ -1154,7 +1154,7 @@ export function GitHubStatsPage() {
                                 <span>Public</span>
                               </div>
                             )}
-                            <span className="text-sm font-mono text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                            <span className="text-sm font-mono text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm">
                               {run.repository}
                             </span>
                           </div>
@@ -1229,14 +1229,14 @@ export function GitHubStatsPage() {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm font-mono text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                          <span className="text-sm font-mono text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm">
                             {branch.repository}
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center space-x-2">
                             <GitBranch className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm font-mono text-gray-900 dark:text-white bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded">
+                            <span className="text-sm font-mono text-gray-900 dark:text-white bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-sm">
                               {branch.branchName}
                             </span>
                           </div>
@@ -1244,7 +1244,7 @@ export function GitHubStatsPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center space-x-2">
                             <GitBranch className="w-4 h-4 text-green-500" />
-                            <span className="text-sm font-mono text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">
+                            <span className="text-sm font-mono text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-sm">
                               {branch.headBranch}
                             </span>
                           </div>
@@ -1354,13 +1354,13 @@ export function GitHubStatsPage() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center space-x-2">
                             <Zap className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm font-mono text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                            <span className="text-sm font-mono text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm">
                               {check.headSha}
                             </span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm font-mono text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                          <span className="text-sm font-mono text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-sm">
                             {check.repository}
                           </span>
                         </td>
