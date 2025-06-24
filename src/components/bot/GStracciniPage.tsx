@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Bot, Activity, GitPullRequest, MessageSquare, Server, Calendar, Clock, Users, Eye, EyeOff, Hash, User, ExternalLink, Package } from 'lucide-react';
+import { ArrowLeft, Bot, Activity, GitPullRequest, MessageSquare, Server, Calendar, Clock, Users, Eye, EyeOff, Hash, User, Package } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Header } from '../dashboard/Header';
 import { Footer } from '../dashboard/Footer';

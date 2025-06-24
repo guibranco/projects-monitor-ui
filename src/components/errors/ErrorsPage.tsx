@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, AlertTriangle, FileText, Folder, Calendar, Clock, HardDrive, MapPin, Hash, Trash2, Trash } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowLeft, AlertTriangle, FileText, Folder, Calendar, Clock, HardDrive, Hash, Trash2, Trash } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Header } from '../dashboard/Header';
 import { Footer } from '../dashboard/Footer';

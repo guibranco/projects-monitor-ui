@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Trophy, Users, Calendar, Eye, EyeOff, Clock, MapPin, Hash, Trash2, Check, X, AlertTriangle, Star, Target, Activity } from 'lucide-react';
+import { ArrowLeft, Trophy, Users, Calendar, Eye, EyeOff, Clock, MapPin, Trash2, Check, AlertTriangle, Target, Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Header } from '../dashboard/Header';
 import { Footer } from '../dashboard/Footer';
