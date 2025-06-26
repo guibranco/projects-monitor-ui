@@ -37,7 +37,7 @@ export function Footer() {
 
             <div className="flex items-center space-x-6">
               <a
-                href="https://github.com/guibranco/projects-monitor"
+                href="https://github.com/guibranco/projects-monitor-ui"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-500 transition-colors group"
