@@ -98,15 +98,15 @@ export function Dashboard() {
             <SystemMetrics />
           </div>
 
-          {/* Middle Column - GitHub Stats */}
+          {/* Middle Column - GitHub Activity Only */}
           <div className="lg:col-span-2 space-y-6">
             <GitHubActivity />
-            <GitHubStats />
           </div>
 
-          {/* Right Column - Service Status */}
+          {/* Right Column - Service Status & GitHub Stats */}
           <div className="lg:col-span-1 space-y-6">
             <ServiceStatus />
+            <GitHubStats />
           </div>
         </div>
       </main>
