@@ -8,6 +8,7 @@ import { GitHubStatsPage } from './components/github/GitHubStatsPage';
 import { OpsOverviewPage } from './components/ops/OpsOverviewPage';
 import { GStracciniPage } from './components/bot/GStracciniPage';
 import { SportsAgendaPage } from './components/sports/SportsAgendaPage';
+import { VagasAggregatorPage } from './components/vagas/VagasAggregatorPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/ops-overview" element={<OpsOverviewPage />} />
       <Route path="/gstraccini-bot" element={<GStracciniPage />} />
       <Route path="/sports-agenda" element={<SportsAgendaPage />} />
+      <Route path="/vagas-aggregator" element={<VagasAggregatorPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
