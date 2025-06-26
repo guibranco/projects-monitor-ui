@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AlertTriangle, Github, Server, Bot, Trophy, LogOut } from 'lucide-react';
+import { AlertTriangle, Github, Server, Bot, Trophy, LogOut, Briefcase } from 'lucide-react';
 import { GitHubStats } from './GitHubStats';
 import { SystemMetrics } from './SystemMetrics';
 import { ServiceStatus } from './ServiceStatus';
@@ -75,6 +75,13 @@ export function Dashboard() {
                 >
                   <Trophy className="w-4 h-4" />
                   <span>Sports Agenda</span>
+                </Link>
+                <Link
+                  to="/vagas-aggregator"
+                  className="w-full flex items-center space-x-2 px-3 py-2 text-sm font-medium text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-900/30 transition-colors"
+                >
+                  <Briefcase className="w-4 h-4" />
+                  <span>Vagas Aggregator</span>
                 </Link>
                 <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-2">
                   <button
