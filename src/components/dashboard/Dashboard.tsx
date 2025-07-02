@@ -10,6 +10,9 @@ import { WebhooksStats } from './WebhooksStats';
 import { Footer } from './Footer';
 import { mockAuth } from '../../lib/auth';
 
+/**
+ * Renders the main dashboard component with navigation, theme toggle, and various statistics sections.
+ */
 export function Dashboard() {
   const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(() => {
