@@ -29,6 +29,8 @@ export function WebhooksStats() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [countdown, setCountdown] = useState(60); // 60 seconds countdown
+  const [isAutoRefreshing, setIsAutoRefreshing] = useState(true);
 
   /**
    * Fetches webhook statistics from the specified endpoint and updates the component's state with the data.
@@ -52,6 +54,7 @@ export function WebhooksStats() {
       const data = await response.json();
       setWebhooksData(data);
       setLastUpdated(new Date());
+      setCountdown(60); // Reset countdown after successful fetch
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch webhooks stats');
       console.error('Error fetching webhooks stats:', err);
@@ -60,14 +63,30 @@ export function WebhooksStats() {
     }
   };
 
+  const handleManualRefresh = () => {
+    fetchWebhooksStats();
+  };
+
   useEffect(() => {
     fetchWebhooksStats();
-    
-    // Refresh data every 5 minutes
-    const interval = setInterval(fetchWebhooksStats, 5 * 60 * 1000);
-    
-    return () => clearInterval(interval);
   }, []);
+
+  // Countdown timer effect
+  useEffect(() => {
+    if (!isAutoRefreshing) return;
+
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          fetchWebhooksStats();
+          return 60;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isAutoRefreshing]);
 
   /**
    * Formats a date string into a locale-specific string representation.
@@ -159,6 +178,12 @@ export function WebhooksStats() {
     }
   };
 
+  const formatCountdown = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return mins > 0 ? `${mins}:${secs.toString().padStart(2, '0')}` : `${secs}s`;
+  };
+
   // Sort data by event count (descending)
   const sortedData = Object.entries(webhooksData).sort(
     ([, a], [, b]) => b.EventCount - a.EventCount
@@ -170,7 +195,7 @@ export function WebhooksStats() {
   const totalBots = Object.keys(webhooksData).filter(username => username.includes('[bot]')).length;
   const totalHumanUsers = totalUsers - totalBots;
 
-  if (loading) {
+  if (loading && !lastUpdated) {
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
         <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
@@ -187,7 +212,7 @@ export function WebhooksStats() {
     );
   }
 
-  if (error) {
+  if (error && !lastUpdated) {
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
         <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
@@ -197,7 +222,7 @@ export function WebhooksStats() {
               <span>Webhooks Handler Stats</span>
             </h2>
             <button
-              onClick={fetchWebhooksStats}
+              onClick={handleManualRefresh}
               className="flex items-center space-x-2 px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors"
             >
               <RefreshCw className="w-4 h-4" />
@@ -229,14 +254,28 @@ export function WebhooksStats() {
               </span>
             )}
           </h2>
-          <button
-            onClick={fetchWebhooksStats}
-            disabled={loading}
-            className="flex items-center space-x-2 px-3 py-1 bg-blue-500 hover:bg-blue-600 disabled:opacity-50 text-white rounded-md transition-colors"
-          >
-            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-            <span>Refresh</span>
-          </button>
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() => setIsAutoRefreshing(!isAutoRefreshing)}
+              className={`px-3 py-1 text-xs rounded-md transition-colors ${
+                isAutoRefreshing
+                  ? 'bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/30'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+              }`}
+            >
+              Auto-refresh: {isAutoRefreshing ? 'ON' : 'OFF'}
+            </button>
+            <button
+              onClick={handleManualRefresh}
+              disabled={loading}
+              className="flex items-center space-x-2 px-3 py-1 bg-blue-500 hover:bg-blue-600 disabled:opacity-50 text-white rounded-md transition-colors min-w-[100px]"
+            >
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+              <span>
+                {loading ? 'Loading...' : isAutoRefreshing ? formatCountdown(countdown) : 'Refresh'}
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 
