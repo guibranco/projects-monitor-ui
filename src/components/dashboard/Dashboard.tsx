@@ -39,7 +39,7 @@ export function Dashboard() {
       {/* Main Content */}
       <main className="w-full px-6 py-8 flex-1">
         <div className="space-y-6">
-          {/* Top Row - Quick Actions, GitHub Activity, Service Status */}
+          {/* Main Row - Quick Actions, GitHub Activity & Webhooks Stats, Service Status */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Left Column - Quick Actions & System Metrics */}
             <div className="lg:col-span-1 space-y-6">
@@ -104,9 +104,10 @@ export function Dashboard() {
               <SystemMetrics />
             </div>
 
-            {/* Middle Column - GitHub Activity */}
+            {/* Middle Column - GitHub Activity & Webhooks Stats */}
             <div className="lg:col-span-2 space-y-6">
               <GitHubActivity />
+              <WebhooksStats />
             </div>
 
             {/* Right Column - Service Status & GitHub Stats */}
@@ -114,11 +115,6 @@ export function Dashboard() {
               <ServiceStatus />
               <GitHubStats />
             </div>
-          </div>
-
-          {/* Bottom Row - Webhooks Stats */}
-          <div className="w-full">
-            <WebhooksStats />
           </div>
         </div>
       </main>
