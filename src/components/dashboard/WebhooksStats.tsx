@@ -15,14 +15,20 @@ interface WebhooksStatsData {
 }
 
 /**
- * Renders a component displaying webhooks statistics.
+ * A React component that displays statistics about webhooks, including event counts, user activity levels, and more.
  *
- * This component manages the state of webhook data, loading status, error messages,
- * and last updated time. It fetches data from an API, processes it to calculate various
- * statistics such as total events, user types, and activity levels, and renders it in a table.
- * The component also includes functionality to refresh the data every 5 minutes.
+ * The component fetches webhook data from an API and updates it periodically based on auto-refresh settings.
+ * It calculates various totals such as total events, users, bots, and human users. The component also includes
+ * a countdown timer for automatic refresh and error handling mechanisms for failed fetch attempts.
  *
- * @returns A React JSX element representing the webhooks statistics UI.
+ * Key features:
+ * - Fetches webhook statistics from an external API.
+ * - Displays total event count, user counts (total, bots, human), and individual user statistics.
+ * - Provides auto-refresh functionality with a countdown timer.
+ * - Includes error handling for data fetching failures.
+ * - Uses conditional rendering to display different UI states based on loading status and errors.
+ *
+ * The component uses React hooks such as useState and useEffect to manage state and side effects.
  */
 export function WebhooksStats() {
   const [webhooksData, setWebhooksData] = useState<WebhooksStatsData>({});
@@ -63,6 +69,9 @@ export function WebhooksStats() {
     }
   };
 
+  /**
+   * Fetches webhooks statistics manually.
+   */
   const handleManualRefresh = () => {
     fetchWebhooksStats();
   };
@@ -89,7 +98,7 @@ export function WebhooksStats() {
   }, [isAutoRefreshing]);
 
   /**
-   * Formats a date string into a locale-specific string representation.
+   * Formats a date string to a locale-specific string representation.
    */
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString();
@@ -178,6 +187,9 @@ export function WebhooksStats() {
     }
   };
 
+  /**
+   * Formats a countdown timer in minutes and seconds.
+   */
   const formatCountdown = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
