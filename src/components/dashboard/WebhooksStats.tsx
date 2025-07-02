@@ -39,8 +39,13 @@ export function WebhooksStats() {
   const [isAutoRefreshing, setIsAutoRefreshing] = useState(true);
 
   /**
-   * Fetches and updates webhooks statistics from the specified API endpoint.
-   * Handles loading state, error handling, and countdown reset upon successful fetch.
+   * Fetches webhook statistics from the specified endpoint and updates the component's state with the data.
+   *
+   * This function performs an asynchronous HTTP GET request to retrieve webhooks statistics.
+   * It sets the loading state to true before making the request and updates the error state if the request fails.
+   * Upon successful retrieval, it parses the JSON response and updates the webhooks data and last updated time in the component's state.
+   * If any errors occur during the fetch operation, it catches them, sets an appropriate error message, logs the error to the console,
+   * and ensures that the loading state is set back to false in the `finally` block.
    */
   const fetchWebhooksStats = async () => {
     try {
@@ -99,6 +104,15 @@ export function WebhooksStats() {
     return new Date(dateString).toLocaleString();
   };
 
+  /**
+   * Formats a given number of minutes into a human-readable duration string.
+   * The function converts minutes into hours, days, and remaining minutes,
+   * and formats them accordingly. If the total hours exceed 24, it includes
+   * the number of days and remaining hours in the output.
+   *
+   * @param {number} minutes - The total number of minutes to format.
+   * @returns {string} A formatted duration string in the format 'Xd Yh Zm'.
+   */
   const formatDuration = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const mins = Math.floor(minutes % 60);
@@ -114,6 +128,9 @@ export function WebhooksStats() {
     }
   };
 
+  /**
+   * Determines the type of user based on username.
+   */
   const getUserType = (username: string) => {
     if (username.includes('[bot]')) {
       return 'bot';
@@ -121,10 +138,24 @@ export function WebhooksStats() {
     return 'user';
   };
 
+  /**
+   * Determines and returns the appropriate icon component based on user type.
+   */
   const getUserIcon = (username: string) => {
     return getUserType(username) === 'bot' ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />;
   };
 
+  /**
+   * Determines the activity level based on events per minute.
+   *
+   * This function assesses the input `eventsPerMinute` and categorizes it into
+   * four levels: 'high', 'medium', 'low', or 'minimal'. The categorization is
+   * based on a series of conditional checks that compare the input value to
+   * predefined thresholds. The first condition met determines the activity level,
+   * ensuring a clear hierarchical classification.
+   *
+   * @param eventsPerMinute - The number of events occurring per minute.
+   */
   const getActivityLevel = (eventsPerMinute: number) => {
     if (eventsPerMinute >= 5) return 'high';
     if (eventsPerMinute >= 1) return 'medium';
@@ -132,6 +163,15 @@ export function WebhooksStats() {
     return 'minimal';
   };
 
+  /**
+   * Determines the color class based on the activity level.
+   *
+   * This function maps different activity levels to their corresponding CSS color classes.
+   * It returns a string containing text and background color classes for light and dark themes.
+   *
+   * @param level - The activity level as a string ('high', 'medium', 'low', 'minimal').
+   * @returns A string with CSS classes for text and background colors in both light and dark modes.
+   */
   const getActivityColor = (level: string) => {
     switch (level) {
       case 'high':
