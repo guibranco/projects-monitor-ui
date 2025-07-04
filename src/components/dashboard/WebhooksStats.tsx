@@ -15,20 +15,13 @@ interface WebhooksStatsData {
 }
 
 /**
- * A React component that displays statistics about webhooks, including event counts, user activity levels, and more.
+ * WebhooksHandlerStats Component
  *
- * The component fetches webhook data from an API and updates it periodically based on auto-refresh settings.
- * It calculates various totals such as total events, users, bots, and human users. The component also includes
- * a countdown timer for automatic refresh and error handling mechanisms for failed fetch attempts.
+ * This component fetches and displays statistics related to webhooks, including total events,
+ * users, bots, human users, and individual user/bot activity details. It supports auto-refresh
+ * functionality and provides error handling for data loading failures.
  *
- * Key features:
- * - Fetches webhook statistics from an external API.
- * - Displays total event count, user counts (total, bots, human), and individual user statistics.
- * - Provides auto-refresh functionality with a countdown timer.
- * - Includes error handling for data fetching failures.
- * - Uses conditional rendering to display different UI states based on loading status and errors.
- *
- * The component uses React hooks such as useState and useEffect to manage state and side effects.
+ * @returns {JSX.Element} - A React element containing the webhook statistics table.
  */
 export function WebhooksStats() {
   const [webhooksData, setWebhooksData] = useState<WebhooksStatsData>({});
@@ -43,7 +36,7 @@ export function WebhooksStats() {
    *
    * This function performs an asynchronous HTTP GET request to retrieve webhooks statistics.
    * It sets the loading state to true before making the request and updates the error state if the request fails.
-   * Upon successful retrieval, it parses the JSON response and updates the webhooks data and last updated time in the component's state.
+   * Upon successful retrieval, it parses the JSON response and updates the webhooks data, last updated time, and resets the countdown in the component's state.
    * If any errors occur during the fetch operation, it catches them, sets an appropriate error message, logs the error to the console,
    * and ensures that the loading state is set back to false in the `finally` block.
    */
@@ -98,7 +91,7 @@ export function WebhooksStats() {
   }, [isAutoRefreshing]);
 
   /**
-   * Formats a date string to a locale-specific string representation.
+   * Converts a date string to a locale-specific string representation.
    */
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString();
@@ -106,12 +99,10 @@ export function WebhooksStats() {
 
   /**
    * Formats a given number of minutes into a human-readable duration string.
-   * The function converts minutes into hours, days, and remaining minutes,
-   * and formats them accordingly. If the total hours exceed 24, it includes
-   * the number of days and remaining hours in the output.
+   * Converts minutes into hours, days, and remaining minutes, and formats them accordingly.
+   * If the total hours exceed 24, it includes the number of days and remaining hours in the output.
    *
    * @param {number} minutes - The total number of minutes to format.
-   * @returns {string} A formatted duration string in the format 'Xd Yh Zm'.
    */
   const formatDuration = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
@@ -129,7 +120,7 @@ export function WebhooksStats() {
   };
 
   /**
-   * Determines the type of user based on username.
+   * Determines the user type based on whether the username includes '[bot]'.
    */
   const getUserType = (username: string) => {
     if (username.includes('[bot]')) {
@@ -139,7 +130,7 @@ export function WebhooksStats() {
   };
 
   /**
-   * Determines and returns the appropriate icon component based on user type.
+   * Returns the icon component based on the user type.
    */
   const getUserIcon = (username: string) => {
     return getUserType(username) === 'bot' ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />;
@@ -148,10 +139,10 @@ export function WebhooksStats() {
   /**
    * Determines the activity level based on events per minute.
    *
-   * This function assesses the input `eventsPerMinute` and categorizes it into
+   * This function evaluates the `eventsPerMinute` input and categorizes it into
    * four levels: 'high', 'medium', 'low', or 'minimal'. The categorization is
-   * based on a series of conditional checks that compare the input value to
-   * predefined thresholds. The first condition met determines the activity level,
+   * performed through a series of conditional checks that compare the input value
+   * to specific thresholds. The first condition met determines the activity level,
    * ensuring a clear hierarchical classification.
    *
    * @param eventsPerMinute - The number of events occurring per minute.
