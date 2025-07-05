@@ -15,13 +15,15 @@ interface WebhooksStatsData {
 }
 
 /**
- * WebhooksHandlerStats Component
+ * React component that displays webhook handler statistics, including total events,
+ * total users (bots and human), and detailed user/bot activity information such as
+ * event count, activity level, events per minute, duration of activity, and last activity time.
  *
- * This component fetches and displays statistics related to webhooks, including total events,
- * users, bots, human users, and individual user/bot activity details. It supports auto-refresh
- * functionality and provides error handling for data loading failures.
+ * The component fetches data from a remote endpoint and handles loading, error, and success states.
+ * It also includes features for auto-refreshing the statistics with a countdown timer,
+ * manual refresh button, and toggling between auto-refresh and manual refresh modes.
  *
- * @returns {JSX.Element} - A React element containing the webhook statistics table.
+ * @returns {JSX.Element} A React JSX element representing the Webhooks Handler Stats component.
  */
 export function WebhooksStats() {
   const [webhooksData, setWebhooksData] = useState<WebhooksStatsData>({});
@@ -98,9 +100,10 @@ export function WebhooksStats() {
   };
 
   /**
-   * Formats a given number of minutes into a human-readable duration string.
-   * Converts minutes into hours, days, and remaining minutes, and formats them accordingly.
-   * If the total hours exceed 24, it includes the number of days and remaining hours in the output.
+   * Converts a given number of minutes into a human-readable duration string.
+   * The function calculates hours, days, and remaining minutes, formatting them
+   * accordingly. If total hours exceed 24, it includes days and remaining hours;
+   * otherwise, it formats based on hours and minutes alone.
    *
    * @param {number} minutes - The total number of minutes to format.
    */
@@ -139,11 +142,11 @@ export function WebhooksStats() {
   /**
    * Determines the activity level based on events per minute.
    *
-   * This function evaluates the `eventsPerMinute` input and categorizes it into
-   * four levels: 'high', 'medium', 'low', or 'minimal'. The categorization is
-   * performed through a series of conditional checks that compare the input value
-   * to specific thresholds. The first condition met determines the activity level,
-   * ensuring a clear hierarchical classification.
+   * This function evaluates the input `eventsPerMinute` and categorizes it into
+   * four levels: 'high', 'medium', 'low', or 'minimal'. The classification is
+   * determined by a series of conditional checks against predefined thresholds.
+   * The first condition met assigns the corresponding activity level, ensuring a
+   * clear hierarchical categorization.
    *
    * @param eventsPerMinute - The number of events occurring per minute.
    */
