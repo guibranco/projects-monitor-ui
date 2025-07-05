@@ -38,7 +38,7 @@ export function WebhooksStats() {
    *
    * This function performs an asynchronous HTTP GET request to retrieve webhooks statistics.
    * It sets the loading state to true before making the request and updates the error state if the request fails.
-   * Upon successful retrieval, it parses the JSON response and updates the webhooks data and last updated time in the component's state.
+   * Upon successful retrieval, it parses the JSON response and updates the webhooks data, last updated time, and resets the countdown in the component's state.
    * If any errors occur during the fetch operation, it catches them, sets an appropriate error message, logs the error to the console,
    * and ensures that the loading state is set back to false in the `finally` block.
    */
@@ -93,7 +93,7 @@ export function WebhooksStats() {
   }, [isAutoRefreshing]);
 
   /**
-   * Formats a date string to a locale-specific string representation.
+   * Converts a date string to a locale-specific string representation.
    */
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString();
@@ -123,7 +123,7 @@ export function WebhooksStats() {
   };
 
   /**
-   * Determines the type of user based on username.
+   * Determines the user type based on whether the username includes '[bot]'.
    */
   const getUserType = (username: string) => {
     if (username.includes('[bot]')) {
@@ -133,7 +133,7 @@ export function WebhooksStats() {
   };
 
   /**
-   * Determines and returns the appropriate icon component based on user type.
+   * Returns the icon component based on the user type.
    */
   const getUserIcon = (username: string) => {
     return getUserType(username) === 'bot' ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />;
