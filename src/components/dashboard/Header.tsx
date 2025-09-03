@@ -1,5 +1,5 @@
-import React from 'react';
-import { Activity, Moon, Sun, User } from 'lucide-react';
+import React from "react";
+import { Activity, Moon, Sun, User } from "lucide-react";
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -13,7 +13,9 @@ export function Header({ isDarkMode, setIsDarkMode }: HeaderProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Activity className="w-8 h-8 text-blue-500" />
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">Project Monitor</h1>
+            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+              Project Monitor
+            </h1>
           </div>
           <div className="flex items-center space-x-4">
             <button
@@ -23,7 +25,9 @@ export function Header({ isDarkMode, setIsDarkMode }: HeaderProps) {
             >
               <div
                 className={`absolute left-1 top-1 w-6 h-6 rounded-full transform transition-transform duration-300 ${
-                  isDarkMode ? 'translate-x-8 bg-gray-800' : 'translate-x-0 bg-yellow-500'
+                  isDarkMode
+                    ? "translate-x-8 bg-gray-800"
+                    : "translate-x-0 bg-yellow-500"
                 }`}
               >
                 {isDarkMode ? (
@@ -35,7 +39,9 @@ export function Header({ isDarkMode, setIsDarkMode }: HeaderProps) {
             </button>
             <div className="flex items-center space-x-2">
               <User className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-              <span className="text-sm font-medium text-gray-900 dark:text-white">John Doe</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">
+                John Doe
+              </span>
             </div>
           </div>
         </div>
