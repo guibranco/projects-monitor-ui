@@ -1,14 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { AlertTriangle, Github, Server, Bot, Trophy, LogOut, Briefcase } from 'lucide-react';
-import { GitHubStats } from './GitHubStats';
-import { SystemMetrics } from './SystemMetrics';
-import { ServiceStatus } from './ServiceStatus';
-import { Header } from './Header';
-import { GitHubActivity } from './GitHubActivity';
-import { WebhooksStats } from './WebhooksStats';
-import { Footer } from './Footer';
-import { mockAuth } from '../../lib/auth';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  AlertTriangle,
+  Github,
+  Server,
+  Bot,
+  Trophy,
+  LogOut,
+  Briefcase,
+} from "lucide-react";
+import { GitHubStats } from "./GitHubStats";
+import { SystemMetrics } from "./SystemMetrics";
+import { ServiceStatus } from "./ServiceStatus";
+import { Header } from "./Header";
+import { GitHubActivity } from "./GitHubActivity";
+import { WebhooksStats } from "./WebhooksStats";
+import { Footer } from "./Footer";
+import { mockAuth } from "../../lib/auth";
 
 /**
  * Renders the main dashboard component with navigation, theme toggle, and various statistics sections.
@@ -16,20 +24,20 @@ import { mockAuth } from '../../lib/auth';
 export function Dashboard() {
   const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const storedTheme = localStorage.getItem('darkMode');
-      return storedTheme === null ? true : storedTheme === 'true';
+    if (typeof window !== "undefined") {
+      const storedTheme = localStorage.getItem("darkMode");
+      return storedTheme === null ? true : storedTheme === "true";
     }
     return true;
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDarkMode);
-    localStorage.setItem('darkMode', isDarkMode.toString());
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    localStorage.setItem("darkMode", isDarkMode.toString());
   }, [isDarkMode]);
 
   const handleLogout = () => {
-    mockAuth.logout(() => navigate('/'));
+    mockAuth.logout(() => navigate("/"));
   };
 
   return (
@@ -45,7 +53,9 @@ export function Dashboard() {
             <div className="lg:col-span-1 space-y-6">
               {/* Quick Actions */}
               <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
-                <h2 className="text-lg font-semibold mb-4 dark:text-white">Quick Actions</h2>
+                <h2 className="text-lg font-semibold mb-4 dark:text-white">
+                  Quick Actions
+                </h2>
                 <div className="space-y-2">
                   <Link
                     to="/errors"
@@ -100,7 +110,7 @@ export function Dashboard() {
                   </div>
                 </div>
               </div>
-              
+
               <SystemMetrics />
             </div>
 
