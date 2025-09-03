@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface StatCardProps {
   icon: React.ElementType;
@@ -7,7 +7,12 @@ interface StatCardProps {
   color?: string;
 }
 
-export function StatCard({ icon: Icon, label, value, color = "blue" }: StatCardProps) {
+export function StatCard({
+  icon: Icon,
+  label,
+  value,
+  color = "blue",
+}: StatCardProps) {
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
       <div className="flex items-center space-x-3">

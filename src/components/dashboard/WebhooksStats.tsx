@@ -1,5 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Activity, User, Bot, Clock, TrendingUp, RefreshCw } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import {
+  Activity,
+  User,
+  Bot,
+  Clock,
+  TrendingUp,
+  RefreshCw,
+} from "lucide-react";
 
 interface WebhookStats {
   EventCount: number;
@@ -46,19 +53,21 @@ export function WebhooksStats() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch('https://webhooks.straccini.com/Stats');
-      
+      const response = await fetch("https://webhooks.straccini.com/Stats");
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const data = await response.json();
       setWebhooksData(data);
       setLastUpdated(new Date());
       setCountdown(60); // Reset countdown after successful fetch
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch webhooks stats');
-      console.error('Error fetching webhooks stats:', err);
+      setError(
+        err instanceof Error ? err.message : "Failed to fetch webhooks stats",
+      );
+      console.error("Error fetching webhooks stats:", err);
     } finally {
       setLoading(false);
     }
@@ -110,7 +119,7 @@ export function WebhooksStats() {
   const formatDuration = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const mins = Math.floor(minutes % 60);
-    
+
     if (hours > 24) {
       const days = Math.floor(hours / 24);
       const remainingHours = hours % 24;
@@ -126,17 +135,21 @@ export function WebhooksStats() {
    * Determines the user type based on whether the username includes '[bot]'.
    */
   const getUserType = (username: string) => {
-    if (username.includes('[bot]')) {
-      return 'bot';
+    if (username.includes("[bot]")) {
+      return "bot";
     }
-    return 'user';
+    return "user";
   };
 
   /**
    * Returns the icon component based on the user type.
    */
   const getUserIcon = (username: string) => {
-    return getUserType(username) === 'bot' ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />;
+    return getUserType(username) === "bot" ? (
+      <Bot className="w-4 h-4" />
+    ) : (
+      <User className="w-4 h-4" />
+    );
   };
 
   /**
@@ -151,10 +164,10 @@ export function WebhooksStats() {
    * @param eventsPerMinute - The number of events occurring per minute.
    */
   const getActivityLevel = (eventsPerMinute: number) => {
-    if (eventsPerMinute >= 5) return 'high';
-    if (eventsPerMinute >= 1) return 'medium';
-    if (eventsPerMinute >= 0.1) return 'low';
-    return 'minimal';
+    if (eventsPerMinute >= 5) return "high";
+    if (eventsPerMinute >= 1) return "medium";
+    if (eventsPerMinute >= 0.1) return "low";
+    return "minimal";
   };
 
   /**
@@ -168,16 +181,16 @@ export function WebhooksStats() {
    */
   const getActivityColor = (level: string) => {
     switch (level) {
-      case 'high':
-        return 'text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20';
-      case 'medium':
-        return 'text-orange-600 bg-orange-100 dark:text-orange-400 dark:bg-orange-900/20';
-      case 'low':
-        return 'text-yellow-600 bg-yellow-100 dark:text-yellow-400 dark:bg-yellow-900/20';
-      case 'minimal':
-        return 'text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20';
+      case "high":
+        return "text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20";
+      case "medium":
+        return "text-orange-600 bg-orange-100 dark:text-orange-400 dark:bg-orange-900/20";
+      case "low":
+        return "text-yellow-600 bg-yellow-100 dark:text-yellow-400 dark:bg-yellow-900/20";
+      case "minimal":
+        return "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20";
       default:
-        return 'text-gray-600 bg-gray-100 dark:text-gray-400 dark:bg-gray-900/20';
+        return "text-gray-600 bg-gray-100 dark:text-gray-400 dark:bg-gray-900/20";
     }
   };
 
@@ -187,18 +200,25 @@ export function WebhooksStats() {
   const formatCountdown = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return mins > 0 ? `${mins}:${secs.toString().padStart(2, '0')}` : `${secs}s`;
+    return mins > 0
+      ? `${mins}:${secs.toString().padStart(2, "0")}`
+      : `${secs}s`;
   };
 
   // Sort data by event count (descending)
   const sortedData = Object.entries(webhooksData).sort(
-    ([, a], [, b]) => b.EventCount - a.EventCount
+    ([, a], [, b]) => b.EventCount - a.EventCount,
   );
 
   // Calculate totals
-  const totalEvents = Object.values(webhooksData).reduce((sum, stats) => sum + stats.EventCount, 0);
+  const totalEvents = Object.values(webhooksData).reduce(
+    (sum, stats) => sum + stats.EventCount,
+    0,
+  );
   const totalUsers = Object.keys(webhooksData).length;
-  const totalBots = Object.keys(webhooksData).filter(username => username.includes('[bot]')).length;
+  const totalBots = Object.keys(webhooksData).filter((username) =>
+    username.includes("[bot]"),
+  ).length;
   const totalHumanUsers = totalUsers - totalBots;
 
   if (loading && !lastUpdated) {
@@ -212,7 +232,9 @@ export function WebhooksStats() {
         </div>
         <div className="p-8 text-center">
           <RefreshCw className="w-8 h-8 text-blue-500 animate-spin mx-auto mb-4" />
-          <p className="text-gray-500 dark:text-gray-400">Loading webhooks statistics...</p>
+          <p className="text-gray-500 dark:text-gray-400">
+            Loading webhooks statistics...
+          </p>
         </div>
       </div>
     );
@@ -240,7 +262,9 @@ export function WebhooksStats() {
           <div className="text-red-500 mb-4">
             <Activity className="w-12 h-12 mx-auto mb-2" />
             <p className="font-medium">Failed to load webhooks statistics</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{error}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              {error}
+            </p>
           </div>
         </div>
       </div>
@@ -265,20 +289,26 @@ export function WebhooksStats() {
               onClick={() => setIsAutoRefreshing(!isAutoRefreshing)}
               className={`px-3 py-1 text-xs rounded-md transition-colors ${
                 isAutoRefreshing
-                  ? 'bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/30'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                  ? "bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/20 dark:text-green-400 dark:hover:bg-green-900/30"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
               }`}
             >
-              Auto-refresh: {isAutoRefreshing ? 'ON' : 'OFF'}
+              Auto-refresh: {isAutoRefreshing ? "ON" : "OFF"}
             </button>
             <button
               onClick={handleManualRefresh}
               disabled={loading}
               className="flex items-center space-x-2 px-3 py-1 bg-blue-500 hover:bg-blue-600 disabled:opacity-50 text-white rounded-md transition-colors min-w-[100px]"
             >
-              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+              <RefreshCw
+                className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
+              />
               <span>
-                {loading ? 'Loading...' : isAutoRefreshing ? formatCountdown(countdown) : 'Refresh'}
+                {loading
+                  ? "Loading..."
+                  : isAutoRefreshing
+                    ? formatCountdown(countdown)
+                    : "Refresh"}
               </span>
             </button>
           </div>
@@ -292,13 +322,17 @@ export function WebhooksStats() {
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {totalEvents.toLocaleString()}
             </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400">Total Events</div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">
+              Total Events
+            </div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-green-600 dark:text-green-400">
               {totalUsers}
             </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400">Total Users</div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">
+              Total Users
+            </div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
@@ -310,7 +344,9 @@ export function WebhooksStats() {
             <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
               {totalHumanUsers}
             </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400">Human Users</div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">
+              Human Users
+            </div>
           </div>
         </div>
       </div>
@@ -345,7 +381,9 @@ export function WebhooksStats() {
                 <td colSpan={6} className="px-6 py-8 text-center">
                   <div className="flex flex-col items-center space-y-2">
                     <Activity className="w-12 h-12 text-gray-400" />
-                    <p className="text-gray-500 dark:text-gray-400">No webhook statistics available</p>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      No webhook statistics available
+                    </p>
                   </div>
                 </td>
               </tr>
@@ -353,7 +391,10 @@ export function WebhooksStats() {
               sortedData.map(([username, stats]) => {
                 const activityLevel = getActivityLevel(stats.EventsPerMinute);
                 return (
-                  <tr key={username} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  <tr
+                    key={username}
+                    className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                  >
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center space-x-2">
                         {getUserIcon(username)}
@@ -373,7 +414,9 @@ export function WebhooksStats() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full ${getActivityColor(activityLevel)}`}>
+                      <span
+                        className={`inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full ${getActivityColor(activityLevel)}`}
+                      >
                         <TrendingUp className="w-3 h-3 mr-1" />
                         {activityLevel.toUpperCase()}
                       </span>
