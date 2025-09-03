@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Activity, Mail, ArrowLeft } from 'lucide-react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Activity, Mail, ArrowLeft } from "lucide-react";
 
 export function ForgotPasswordPage() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (!email) {
-      setError('Please enter your email address');
+      setError("Please enter your email address");
       return;
     }
 
@@ -26,7 +26,9 @@ export function ForgotPasswordPage() {
         <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
           <div className="text-center">
             <Activity className="mx-auto h-12 w-12 text-blue-500" />
-            <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">Check your email</h2>
+            <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
+              Check your email
+            </h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               We've sent a password reset link to {email}
             </p>
@@ -50,9 +52,12 @@ export function ForgotPasswordPage() {
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
         <div className="text-center">
           <Activity className="mx-auto h-12 w-12 text-blue-500" />
-          <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">Reset your password</h2>
+          <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
+            Reset your password
+          </h2>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            Enter your email address and we'll send you a link to reset your password
+            Enter your email address and we'll send you a link to reset your
+            password
           </p>
         </div>
 
@@ -64,7 +69,10 @@ export function ForgotPasswordPage() {
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Email address
             </label>
             <div className="mt-1 relative">
