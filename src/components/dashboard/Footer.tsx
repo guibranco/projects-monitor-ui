@@ -1,5 +1,5 @@
-import React from 'react';
-import { Github } from 'lucide-react';
+import React from "react";
+import { Github } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -28,9 +28,7 @@ export function Footer() {
                   <span className="text-xs text-gray-500 dark:text-gray-400">
                     Developed by
                   </span>
-                  <span className="font-medium">
-                    Guilherme Branco Stracini
-                  </span>
+                  <span className="font-medium">Guilherme Branco Stracini</span>
                 </div>
               </a>
             </div>
