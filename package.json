@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "i18next": "^25.6.2",
+    "i18next": "^25.6.3",
     "lucide-react": "^0.554.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
