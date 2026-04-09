@@ -35,3 +35,10 @@ jobs:
       # optional
       # - name: Test
       #   run: npm test
+
+      # - name: Upload test results
+      #   if: always()
+      #   uses: actions/upload-artifact@v7
+      #   with:
+      #     name: test-results
+      #     path: test-results.json
