@@ -19,6 +19,7 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
+import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { Link } from "react-router-dom";
 import { Header } from "../dashboard/Header";
 import { Footer } from "../dashboard/Footer";
