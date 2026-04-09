@@ -13,16 +13,26 @@ export default tseslint.config(
       ...tseslint.configs.recommended,
       react.configs.recommended,
     ],
+
     files: ["**/*.{ts,tsx}"],
+
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+
     plugins: {
       react,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
     },
+
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
+
     rules: {
       ...reactHooks.configs.recommended.rules,
       "react/jsx-no-undef": "error",
@@ -31,5 +41,5 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
-  },
+  }
 );
