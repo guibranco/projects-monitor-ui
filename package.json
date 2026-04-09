@@ -23,6 +23,8 @@
     "@tailwindcss/postcss": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.58.1",
+    "@typescript-eslint/parser": "^8.58.1",
     "@vitejs/plugin-react-swc": "^4.3.0",
     "baseline-browser-mapping": "^2.10.16",
     "eslint": "^9.39.2",
