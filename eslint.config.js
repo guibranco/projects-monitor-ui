@@ -28,7 +28,10 @@ export default tseslint.config(
       ...tseslint.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       "react/jsx-no-undef": "error",
-      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
     },
-  }
+  },
 );
