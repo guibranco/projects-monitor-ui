@@ -12,7 +12,6 @@ import {
   Edit,
   Save,
   X,
-  Github,
   Hash,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -751,7 +750,7 @@ export function VagasAggregatorPage() {
                           >
                             <td className="px-6 py-4">
                               <div className="flex items-center space-x-2">
-                                <Github className="w-5 h-5 text-gray-400" />
+                                <GitHubIcon className="w-5 h-5 text-gray-400" />
                                 <div>
                                   <div className="text-sm font-medium text-gray-900 dark:text-white">
                                     {repo.owner}/{repo.name}
