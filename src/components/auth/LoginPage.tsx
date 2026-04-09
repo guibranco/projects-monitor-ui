@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Activity, Github, Mail, Lock } from "lucide-react";
+import { Activity, Mail, Lock } from "lucide-react";
+import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { mockAuth } from "../../lib/auth";
 
 export function LoginPage() {
@@ -58,7 +59,7 @@ export function LoginPage() {
                   : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
               }`}
             >
-              <Github className="w-4 h-4" />
+              <GitHubIcon className="w-4 h-4" />
               <span>GitHub</span>
             </button>
           </div>
@@ -132,7 +133,7 @@ export function LoginPage() {
                 </>
               ) : (
                 <>
-                  <Github className="w-4 h-4 mr-2" />
+                  <GitHubIcon className="w-4 h-4 mr-2" />
                   Continue with GitHub
                 </>
               )}

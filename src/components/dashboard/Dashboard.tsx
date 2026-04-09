@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   AlertTriangle,
-  Github,
   Server,
   Bot,
   Trophy,
   LogOut,
   Briefcase,
 } from "lucide-react";
+import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { GitHubStats } from "./GitHubStats";
 import { SystemMetrics } from "./SystemMetrics";
 import { ServiceStatus } from "./ServiceStatus";
@@ -68,7 +68,7 @@ export function Dashboard() {
                     to="/github-stats"
                     className="w-full flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
                   >
-                    <Github className="w-4 h-4" />
+                    <GitHubIcon className="w-4 h-4" />
                     <span>GitHub Analytics</span>
                   </Link>
                   <Link

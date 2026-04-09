@@ -1,5 +1,6 @@
 import React from "react";
-import { Bug, GitPullRequest, Timer, Github } from "lucide-react";
+import { Bug, GitPullRequest, Timer } from "lucide-react";
+import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { StatCard } from "./StatCard";
 import { mockData } from "../../lib/mockData";
 
@@ -7,7 +8,7 @@ export function GitHubActivity() {
   return (
     <div className="grid grid-cols-2 gap-4">
       <StatCard
-        icon={Github}
+        icon={GitHubIcon}
         label="Pull Requests"
         value={mockData.githubPRs}
         color="purple"
