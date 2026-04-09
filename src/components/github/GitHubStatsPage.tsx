@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   ArrowLeft,
-  Github,
   Activity,
   GitPullRequest,
   Bug,
@@ -1013,7 +1012,7 @@ export function GitHubStatsPage() {
               </Link>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
               <div className="flex items-center space-x-2">
-                <Github className="w-6 h-6 text-gray-900 dark:text-white" />
+                <GitHubIcon className="w-6 h-6 text-gray-900 dark:text-white" />
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                   GitHub Analytics
                 </h1>
