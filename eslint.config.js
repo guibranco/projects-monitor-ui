@@ -17,8 +17,7 @@ export default [
         sourceType: "module",
         ecmaFeatures: {
           jsx: true,
-        },
-        project: "./tsconfig.json", // optional, for type-aware rules
+        }
       },
       globals: globals.browser,
     },

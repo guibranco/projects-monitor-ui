@@ -10,9 +10,7 @@ import {
   EyeOff,
   Trash2,
   Edit,
-  Save,
   X,
-  Hash,
 } from "lucide-react";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { Link } from "react-router-dom";
@@ -244,7 +242,6 @@ export function VagasAggregatorPage() {
   );
   const [repositories, setRepositories] = useState(mockRepositories);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [editingRepo, setEditingRepo] = useState<string | null>(null);
   const [newRepo, setNewRepo] = useState<NewRepository>({
     owner: "",
     name: "",
@@ -285,21 +282,7 @@ export function VagasAggregatorPage() {
     setShowAddForm(false);
   };
 
-  const handleEditRepository = (repoId: string) => {
-    setEditingRepo(repoId);
-  };
-
-  const handleSaveRepository = (
-    repoId: string,
-    updatedRepo: Partial<Repository>,
-  ) => {
-    setRepositories((prev) =>
-      prev.map((repo) =>
-        repo.id === repoId ? { ...repo, ...updatedRepo } : repo,
-      ),
-    );
-    setEditingRepo(null);
-  };
+  const handleEditRepository = (_repoId: string) => {};
 
   const handleLabelToggle = (label: string, isNewRepo = false) => {
     if (isNewRepo) {
