@@ -10,7 +10,9 @@ import React from "react";
  * @param props SVG element props applied to the icon
  * @returns A React SVG element representing the GitHub logo
  */
-export function GitHubIcon(props: React.SVGProps<SVGSVGElement>): React.JSX.Element {
+export function GitHubIcon(
+  props: React.SVGProps<SVGSVGElement>,
+): React.JSX.Element {
   return (
     <svg
       viewBox="0 0 24 24"

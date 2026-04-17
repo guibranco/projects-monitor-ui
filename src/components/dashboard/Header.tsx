@@ -6,7 +6,10 @@ interface HeaderProps {
   setIsDarkMode: (value: boolean) => void;
 }
 
-export function Header({ isDarkMode, setIsDarkMode }: HeaderProps): React.JSX.Element {
+export function Header({
+  isDarkMode,
+  setIsDarkMode,
+}: HeaderProps): React.JSX.Element {
   return (
     <header className="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-10">
       <div className="w-full px-6 py-4">

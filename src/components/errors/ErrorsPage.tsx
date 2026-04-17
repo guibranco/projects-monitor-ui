@@ -297,7 +297,9 @@ export function ErrorsPage(): React.JSX.Element {
     return grouped;
   };
 
-  const groupCpanelErrorDetails = (): { [key: string]: CpanelErrorDetail[] } => {
+  const groupCpanelErrorDetails = (): {
+    [key: string]: CpanelErrorDetail[];
+  } => {
     const grouped: { [key: string]: CpanelErrorDetail[] } = {};
     cpanelErrorDetails.forEach((error) => {
       if (!grouped[error.directory]) {
