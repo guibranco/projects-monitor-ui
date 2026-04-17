@@ -6,7 +6,7 @@ interface GaugeChartProps {
   icon: React.ElementType;
 }
 
-export function GaugeChart({ value, label, icon: Icon }: GaugeChartProps) {
+export function GaugeChart({ value, label, icon: Icon }: GaugeChartProps): React.JSX.Element {
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
       <div className="flex items-center justify-between mb-2">

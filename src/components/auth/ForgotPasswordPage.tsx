@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Activity, Mail, ArrowLeft } from "lucide-react";
 
-export function ForgotPasswordPage() {
+export function ForgotPasswordPage(): React.JSX.Element {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     setError("");
 

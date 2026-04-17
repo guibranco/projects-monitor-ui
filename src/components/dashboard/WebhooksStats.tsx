@@ -32,7 +32,7 @@ interface WebhooksStatsData {
  *
  * @returns {JSX.Element} A React JSX element representing the Webhooks Handler Stats component.
  */
-export function WebhooksStats() {
+export function WebhooksStats(): React.JSX.Element {
   const [webhooksData, setWebhooksData] = useState<WebhooksStatsData>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -49,7 +49,7 @@ export function WebhooksStats() {
    * If any errors occur during the fetch operation, it catches them, sets an appropriate error message, logs the error to the console,
    * and ensures that the loading state is set back to false in the `finally` block.
    */
-  const fetchWebhooksStats = async () => {
+  const fetchWebhooksStats = async (): Promise<void> => {
     try {
       setLoading(true);
       setError(null);
@@ -76,7 +76,7 @@ export function WebhooksStats() {
   /**
    * Fetches webhooks statistics manually.
    */
-  const handleManualRefresh = () => {
+  const handleManualRefresh = (): void => {
     fetchWebhooksStats();
   };
 
@@ -98,13 +98,13 @@ export function WebhooksStats() {
       });
     }, 1000);
 
-    return () => clearInterval(timer);
+    return (): void => clearInterval(timer);
   }, [isAutoRefreshing]);
 
   /**
    * Converts a date string to a locale-specific string representation.
    */
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string): string => {
     return new Date(dateString).toLocaleString();
   };
 
@@ -116,7 +116,7 @@ export function WebhooksStats() {
    *
    * @param {number} minutes - The total number of minutes to format.
    */
-  const formatDuration = (minutes: number) => {
+  const formatDuration = (minutes: number): string => {
     const hours = Math.floor(minutes / 60);
     const mins = Math.floor(minutes % 60);
 
@@ -134,7 +134,7 @@ export function WebhooksStats() {
   /**
    * Determines the user type based on whether the username includes '[bot]'.
    */
-  const getUserType = (username: string) => {
+  const getUserType = (username: string): string => {
     if (username.includes("[bot]")) {
       return "bot";
     }
@@ -144,7 +144,7 @@ export function WebhooksStats() {
   /**
    * Returns the icon component based on the user type.
    */
-  const getUserIcon = (username: string) => {
+  const getUserIcon = (username: string): React.JSX.Element => {
     return getUserType(username) === "bot" ? (
       <Bot className="w-4 h-4" />
     ) : (
@@ -163,7 +163,7 @@ export function WebhooksStats() {
    *
    * @param eventsPerMinute - The number of events occurring per minute.
    */
-  const getActivityLevel = (eventsPerMinute: number) => {
+  const getActivityLevel = (eventsPerMinute: number): string => {
     if (eventsPerMinute >= 5) return "high";
     if (eventsPerMinute >= 1) return "medium";
     if (eventsPerMinute >= 0.1) return "low";
@@ -179,7 +179,7 @@ export function WebhooksStats() {
    * @param level - The activity level as a string ('high', 'medium', 'low', 'minimal').
    * @returns A string with CSS classes for text and background colors in both light and dark modes.
    */
-  const getActivityColor = (level: string) => {
+  const getActivityColor = (level: string): string => {
     switch (level) {
       case "high":
         return "text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20";
@@ -197,7 +197,7 @@ export function WebhooksStats() {
   /**
    * Formats a countdown timer in minutes and seconds.
    */
-  const formatCountdown = (seconds: number) => {
+  const formatCountdown = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return mins > 0

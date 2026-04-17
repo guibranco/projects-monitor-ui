@@ -21,7 +21,7 @@ import { mockAuth } from "../../lib/auth";
 /**
  * Renders the main dashboard component with navigation, theme toggle, and various statistics sections.
  */
-export function Dashboard() {
+export function Dashboard(): React.JSX.Element {
   const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -36,7 +36,7 @@ export function Dashboard() {
     localStorage.setItem("darkMode", isDarkMode.toString());
   }, [isDarkMode]);
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     mockAuth.logout(() => navigate("/"));
   };
 

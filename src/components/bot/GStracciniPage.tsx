@@ -413,7 +413,7 @@ const mockInstallationRepositories: InstallationRepository[] = [
   },
 ];
 
-export function GStracciniPage() {
+export function GStracciniPage(): React.JSX.Element {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem("darkMode");
@@ -426,7 +426,7 @@ export function GStracciniPage() {
     "overview" | "feed" | "installations" | "repositories"
   >("overview");
 
-  const getEventColor = (event: string) => {
+  const getEventColor = (event: string): string => {
     switch (event) {
       case "pull_request":
         return "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20";
@@ -444,7 +444,7 @@ export function GStracciniPage() {
     }
   };
 
-  const getActionColor = (action: string) => {
+  const getActionColor = (action: string): string => {
     switch (action) {
       case "opened":
       case "created":
@@ -466,7 +466,7 @@ export function GStracciniPage() {
     }
   };
 
-  const getVisibilityIcon = (visibility: string) => {
+  const getVisibilityIcon = (visibility: string): React.JSX.Element => {
     return visibility === "public" ? (
       <Eye className="w-4 h-4" />
     ) : (
@@ -474,13 +474,13 @@ export function GStracciniPage() {
     );
   };
 
-  const getVisibilityColor = (visibility: string) => {
+  const getVisibilityColor = (visibility: string): string => {
     return visibility === "public"
       ? "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20"
       : "text-orange-600 bg-orange-100 dark:text-orange-400 dark:bg-orange-900/20";
   };
 
-  const getRepositorySelectionColor = (selection: string) => {
+  const getRepositorySelectionColor = (selection: string): string => {
     return selection === "all"
       ? "text-blue-600 bg-blue-100 dark:text-blue-400 dark:bg-blue-900/20"
       : "text-purple-600 bg-purple-100 dark:text-purple-400 dark:bg-purple-900/20";

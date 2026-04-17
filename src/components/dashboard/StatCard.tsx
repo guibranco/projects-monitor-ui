@@ -12,7 +12,7 @@ export function StatCard({
   label,
   value,
   color = "blue",
-}: StatCardProps) {
+}: StatCardProps): React.JSX.Element {
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
       <div className="flex items-center space-x-3">

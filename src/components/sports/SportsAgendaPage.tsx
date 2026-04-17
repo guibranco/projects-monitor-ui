@@ -187,7 +187,7 @@ const mockIgnoredLeagues: IgnoredLeague[] = [
   },
 ];
 
-export function SportsAgendaPage() {
+export function SportsAgendaPage(): React.JSX.Element {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem("darkMode");
@@ -201,7 +201,7 @@ export function SportsAgendaPage() {
   );
   const [ignoredLeagues, setIgnoredLeagues] = useState(mockIgnoredLeagues);
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status: string): string => {
     switch (status) {
       case "pending":
         return "text-yellow-600 bg-yellow-100 dark:text-yellow-400 dark:bg-yellow-900/20";
@@ -214,7 +214,7 @@ export function SportsAgendaPage() {
     }
   };
 
-  const getPriorityColor = (priority: string) => {
+  const getPriorityColor = (priority: string): string => {
     switch (priority) {
       case "high":
         return "text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20";
@@ -227,7 +227,7 @@ export function SportsAgendaPage() {
     }
   };
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status: string): React.JSX.Element => {
     switch (status) {
       case "pending":
         return <Clock className="w-4 h-4" />;
@@ -240,7 +240,7 @@ export function SportsAgendaPage() {
     }
   };
 
-  const getPriorityIcon = (priority: string) => {
+  const getPriorityIcon = (priority: string): React.JSX.Element => {
     switch (priority) {
       case "high":
         return <AlertTriangle className="w-3 h-3" />;
@@ -253,19 +253,19 @@ export function SportsAgendaPage() {
     }
   };
 
-  const handleApproveLeague = (leagueId: string) => {
+  const handleApproveLeague = (leagueId: string): void => {
     setIgnoredLeagues((prev) =>
       prev.filter((league) => league.id !== leagueId),
     );
   };
 
-  const handleDeleteLeague = (leagueId: string) => {
+  const handleDeleteLeague = (leagueId: string): void => {
     setIgnoredLeagues((prev) =>
       prev.filter((league) => league.id !== leagueId),
     );
   };
 
-  const handleReviewLeague = (leagueId: string) => {
+  const handleReviewLeague = (leagueId: string): void => {
     setIgnoredLeagues((prev) =>
       prev.map((league) =>
         league.id === leagueId

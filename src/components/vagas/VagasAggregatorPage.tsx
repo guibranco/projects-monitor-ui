@@ -228,7 +228,7 @@ const mockRepositories: Repository[] = [
   },
 ];
 
-export function VagasAggregatorPage() {
+export function VagasAggregatorPage(): React.JSX.Element {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem("darkMode");
@@ -249,7 +249,7 @@ export function VagasAggregatorPage() {
     labels: [],
   });
 
-  const handleToggleRepository = (repoId: string) => {
+  const handleToggleRepository = (repoId: string): void => {
     setRepositories((prev) =>
       prev.map((repo) =>
         repo.id === repoId ? { ...repo, enabled: !repo.enabled } : repo,
@@ -257,11 +257,11 @@ export function VagasAggregatorPage() {
     );
   };
 
-  const handleDeleteRepository = (repoId: string) => {
+  const handleDeleteRepository = (repoId: string): void => {
     setRepositories((prev) => prev.filter((repo) => repo.id !== repoId));
   };
 
-  const handleAddRepository = () => {
+  const handleAddRepository = (): void => {
     if (!newRepo.owner || !newRepo.name) return;
 
     const repository: Repository = {
@@ -282,9 +282,9 @@ export function VagasAggregatorPage() {
     setShowAddForm(false);
   };
 
-  const handleEditRepository = (_repoId: string) => {};
+  const handleEditRepository = (_repoId: string): void => {};
 
-  const handleLabelToggle = (label: string, isNewRepo = false) => {
+  const handleLabelToggle = (label: string, isNewRepo = false): void => {
     if (isNewRepo) {
       setNewRepo((prev) => ({
         ...prev,
@@ -295,13 +295,13 @@ export function VagasAggregatorPage() {
     }
   };
 
-  const getStatusColor = (enabled: boolean) => {
+  const getStatusColor = (enabled: boolean): string => {
     return enabled
       ? "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20"
       : "text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20";
   };
 
-  const getStatusIcon = (enabled: boolean) => {
+  const getStatusIcon = (enabled: boolean): React.JSX.Element => {
     return enabled ? (
       <Eye className="w-4 h-4" />
     ) : (

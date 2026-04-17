@@ -1,6 +1,6 @@
 import React from "react";
 
-export function GitHubStats() {
+export function GitHubStats(): React.JSX.Element {
   return (
     <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
       <h2 className="text-lg font-semibold mb-4 dark:text-white">

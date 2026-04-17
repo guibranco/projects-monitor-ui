@@ -10,7 +10,7 @@ import { GStracciniPage } from "./components/bot/GStracciniPage";
 import { SportsAgendaPage } from "./components/sports/SportsAgendaPage";
 import { VagasAggregatorPage } from "./components/vagas/VagasAggregatorPage";
 
-function App() {
+function App(): React.JSX.Element {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />

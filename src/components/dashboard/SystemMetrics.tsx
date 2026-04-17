@@ -3,7 +3,7 @@ import { AlertCircle, Box, Cloud, Cpu, HardDrive } from "lucide-react";
 import { GaugeChart } from "./GaugeChart";
 import { mockData } from "../../lib/mockData";
 
-export function SystemMetrics() {
+export function SystemMetrics(): React.JSX.Element {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold dark:text-white">System Metrics</h2>
