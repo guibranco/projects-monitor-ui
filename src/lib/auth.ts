@@ -1,11 +1,11 @@
 // Mock authentication
 export const mockAuth = {
   isAuthenticated: false,
-  login: (callback: () => void) => {
+  login: (callback: () => void): void => {
     mockAuth.isAuthenticated = true;
     callback();
   },
-  logout: (callback: () => void) => {
+  logout: (callback: () => void): void => {
     mockAuth.isAuthenticated = false;
     callback();
   },

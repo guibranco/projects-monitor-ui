@@ -3,7 +3,7 @@ import { Server, Clock, Bot, Globe, CheckCircle, XCircle } from "lucide-react";
 import { StatCard } from "./StatCard";
 import { mockData } from "../../lib/mockData";
 
-export function ServiceStatus() {
+export function ServiceStatus(): React.JSX.Element {
   return (
     <div className="space-y-6">
       <div className="space-y-4">

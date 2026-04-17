@@ -756,7 +756,7 @@ const mockCheckRuns: CheckRun[] = [
   },
 ];
 
-export function GitHubStatsPage() {
+export function GitHubStatsPage(): React.JSX.Element {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem("darkMode");
@@ -774,7 +774,7 @@ export function GitHubStatsPage() {
     | "check-runs"
   >("overview");
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status: string): string => {
     switch (status) {
       case "healthy":
         return "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20";
@@ -787,7 +787,7 @@ export function GitHubStatsPage() {
     }
   };
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status: string): React.JSX.Element => {
     switch (status) {
       case "healthy":
         return <CheckCircle className="w-4 h-4" />;
@@ -800,7 +800,7 @@ export function GitHubStatsPage() {
     }
   };
 
-  const getTrendIcon = (trend: string) => {
+  const getTrendIcon = (trend: string): React.JSX.Element => {
     switch (trend) {
       case "up":
         return <TrendingUp className="w-4 h-4 text-red-500" />;
@@ -813,18 +813,18 @@ export function GitHubStatsPage() {
     }
   };
 
-  const formatIssueType = (type: string) => {
+  const formatIssueType = (type: string): string => {
     return type
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   };
 
-  const getUsagePercentage = (requests: number, limit: number) => {
+  const getUsagePercentage = (requests: number, limit: number): number => {
     return Math.round((requests / limit) * 100);
   };
 
-  const getLabelColor = (label: string) => {
+  const getLabelColor = (label: string): string => {
     const colors: { [key: string]: string } = {
       bug: "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400",
       enhancement:
@@ -848,7 +848,7 @@ export function GitHubStatsPage() {
     );
   };
 
-  const getWorkflowStatusColor = (status: string) => {
+  const getWorkflowStatusColor = (status: string): string => {
     switch (status) {
       case "completed":
         return "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20";
@@ -863,7 +863,7 @@ export function GitHubStatsPage() {
     }
   };
 
-  const getConclusionColor = (conclusion: string) => {
+  const getConclusionColor = (conclusion: string): string => {
     switch (conclusion) {
       case "success":
         return "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20";
@@ -890,7 +890,7 @@ export function GitHubStatsPage() {
     items: GitHubItem[],
     title: string,
     icon: React.ElementType,
-  ) => {
+  ): React.JSX.Element => {
     const Icon = icon;
 
     return (

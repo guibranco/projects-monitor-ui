@@ -470,7 +470,7 @@ const mockQueueData: QueueData[] = [
   },
 ];
 
-export function OpsOverviewPage() {
+export function OpsOverviewPage(): React.JSX.Element {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem("darkMode");
@@ -490,7 +490,7 @@ export function OpsOverviewPage() {
     | "queues"
   >("overview");
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status: string): string => {
     switch (status) {
       case "up":
       case "connected":
@@ -522,7 +522,7 @@ export function OpsOverviewPage() {
     }
   };
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status: string): React.JSX.Element => {
     switch (status) {
       case "up":
       case "connected":
@@ -549,13 +549,13 @@ export function OpsOverviewPage() {
     }
   };
 
-  const getDomainExpiryColor = (days: number) => {
+  const getDomainExpiryColor = (days: number): string => {
     if (days < 0) return "text-red-600 dark:text-red-400";
     if (days < 30) return "text-yellow-600 dark:text-yellow-400";
     return "text-green-600 dark:text-green-400";
   };
 
-  const getLabelColor = (tag: string) => {
+  const getLabelColor = (tag: string): string => {
     const colors: { [key: string]: string } = {
       critical: "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400",
       api: "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400",
@@ -579,13 +579,13 @@ export function OpsOverviewPage() {
     );
   };
 
-  const getQueueLengthColor = (length: number) => {
+  const getQueueLengthColor = (length: number): string => {
     if (length > 500) return "text-red-600 dark:text-red-400";
     if (length > 100) return "text-yellow-600 dark:text-yellow-400";
     return "text-green-600 dark:text-green-400";
   };
 
-  const getConsumerColor = (consumers: number) => {
+  const getConsumerColor = (consumers: number): string => {
     if (consumers === 0) return "text-red-600 dark:text-red-400";
     if (consumers < 2) return "text-yellow-600 dark:text-yellow-400";
     return "text-green-600 dark:text-green-400";

@@ -4,7 +4,7 @@ import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { StatCard } from "./StatCard";
 import { mockData } from "../../lib/mockData";
 
-export function GitHubActivity() {
+export function GitHubActivity(): React.JSX.Element {
   return (
     <div className="grid grid-cols-2 gap-4">
       <StatCard

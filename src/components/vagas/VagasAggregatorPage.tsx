@@ -10,9 +10,7 @@ import {
   EyeOff,
   Trash2,
   Edit,
-  Save,
   X,
-  Hash,
 } from "lucide-react";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { Link } from "react-router-dom";
@@ -230,7 +228,7 @@ const mockRepositories: Repository[] = [
   },
 ];
 
-export function VagasAggregatorPage() {
+export function VagasAggregatorPage(): React.JSX.Element {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem("darkMode");
@@ -244,7 +242,6 @@ export function VagasAggregatorPage() {
   );
   const [repositories, setRepositories] = useState(mockRepositories);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [editingRepo, setEditingRepo] = useState<string | null>(null);
   const [newRepo, setNewRepo] = useState<NewRepository>({
     owner: "",
     name: "",
@@ -252,7 +249,7 @@ export function VagasAggregatorPage() {
     labels: [],
   });
 
-  const handleToggleRepository = (repoId: string) => {
+  const handleToggleRepository = (repoId: string): void => {
     setRepositories((prev) =>
       prev.map((repo) =>
         repo.id === repoId ? { ...repo, enabled: !repo.enabled } : repo,
@@ -260,11 +257,11 @@ export function VagasAggregatorPage() {
     );
   };
 
-  const handleDeleteRepository = (repoId: string) => {
+  const handleDeleteRepository = (repoId: string): void => {
     setRepositories((prev) => prev.filter((repo) => repo.id !== repoId));
   };
 
-  const handleAddRepository = () => {
+  const handleAddRepository = (): void => {
     if (!newRepo.owner || !newRepo.name) return;
 
     const repository: Repository = {
@@ -285,23 +282,9 @@ export function VagasAggregatorPage() {
     setShowAddForm(false);
   };
 
-  const handleEditRepository = (repoId: string) => {
-    setEditingRepo(repoId);
-  };
+  const handleEditRepository = (_repoId: string): void => {};
 
-  const handleSaveRepository = (
-    repoId: string,
-    updatedRepo: Partial<Repository>,
-  ) => {
-    setRepositories((prev) =>
-      prev.map((repo) =>
-        repo.id === repoId ? { ...repo, ...updatedRepo } : repo,
-      ),
-    );
-    setEditingRepo(null);
-  };
-
-  const handleLabelToggle = (label: string, isNewRepo = false) => {
+  const handleLabelToggle = (label: string, isNewRepo = false): void => {
     if (isNewRepo) {
       setNewRepo((prev) => ({
         ...prev,
@@ -312,13 +295,13 @@ export function VagasAggregatorPage() {
     }
   };
 
-  const getStatusColor = (enabled: boolean) => {
+  const getStatusColor = (enabled: boolean): string => {
     return enabled
       ? "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20"
       : "text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20";
   };
 
-  const getStatusIcon = (enabled: boolean) => {
+  const getStatusIcon = (enabled: boolean): React.JSX.Element => {
     return enabled ? (
       <Eye className="w-4 h-4" />
     ) : (

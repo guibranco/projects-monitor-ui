@@ -253,7 +253,7 @@ const mockCpanelErrorDetails: CpanelErrorDetail[] = [
   },
 ];
 
-export function ErrorsPage() {
+export function ErrorsPage(): React.JSX.Element {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const storedTheme = localStorage.getItem("darkMode");
@@ -270,7 +270,7 @@ export function ErrorsPage() {
     mockCpanelErrorDetails,
   );
 
-  const getLevelColor = (level: string) => {
+  const getLevelColor = (level: string): string => {
     switch (level) {
       case "critical":
       case "fatal":
@@ -286,7 +286,7 @@ export function ErrorsPage() {
     }
   };
 
-  const groupLoggerErrors = () => {
+  const groupLoggerErrors = (): { [key: string]: LoggerError[] } => {
     const grouped: { [key: string]: LoggerError[] } = {};
     mockLoggerErrors.forEach((error) => {
       if (!grouped[error.application]) {
@@ -297,7 +297,9 @@ export function ErrorsPage() {
     return grouped;
   };
 
-  const groupCpanelErrorDetails = () => {
+  const groupCpanelErrorDetails = (): {
+    [key: string]: CpanelErrorDetail[];
+  } => {
     const grouped: { [key: string]: CpanelErrorDetail[] } = {};
     cpanelErrorDetails.forEach((error) => {
       if (!grouped[error.directory]) {
@@ -308,15 +310,15 @@ export function ErrorsPage() {
     return grouped;
   };
 
-  const handleDeleteFile = (fileId: string) => {
+  const handleDeleteFile = (fileId: string): void => {
     setCpanelFiles((prev) => prev.filter((file) => file.id !== fileId));
   };
 
-  const handleEmptyTrash = () => {
+  const handleEmptyTrash = (): void => {
     setCpanelFiles([]);
   };
 
-  const handleDeleteDirectoryErrors = (directory: string) => {
+  const handleDeleteDirectoryErrors = (directory: string): void => {
     setCpanelErrorDetails((prev) =>
       prev.filter((error) => error.directory !== directory),
     );

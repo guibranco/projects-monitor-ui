@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: 'pages'
+  group: pages
   cancel-in-progress: true
 
 permissions:
@@ -15,8 +15,12 @@ permissions:
   id-token: write
 
 jobs:
+  validate:
+    uses: ./.github/workflows/validate.yml
+
   build:
     name: Build
+    needs: validate
     runs-on: ubuntu-latest
     outputs:
       fullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}
@@ -30,7 +34,7 @@ jobs:
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v4.5.0
         with:
-          versionSpec: "6.x"
+          versionSpec: 6.x
 
       - name: Determine Version
         id: gitversion
@@ -38,33 +42,23 @@ jobs:
         with:
           useConfigFile: true
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 22
-          cache: "npm"
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: CI=true npm run build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
         with:
           name: build-output
           path: dist/
-
-      # - name: Test
-      #   run: npm test
-
-      # - name: Upload test results
-      #   if: always()
-      #   uses: actions/upload-artifact@v7
-      #   with:
-      #     name: test-results
-      #     path: test-results.json
 
   deploy:
     name: Deploy GH Pages
@@ -77,18 +71,18 @@ jobs:
         with:
           name: build-output
           path: ./dist
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: './dist'
-          
+          path: ./dist
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v5
-  
+
   create_release:
     name: Create release
     needs: [build, deploy]

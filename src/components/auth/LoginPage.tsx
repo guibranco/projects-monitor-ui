@@ -4,7 +4,7 @@ import { Activity, Mail, Lock } from "lucide-react";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { mockAuth } from "../../lib/auth";
 
-export function LoginPage() {
+export function LoginPage(): React.JSX.Element {
   const navigate = useNavigate();
   const [loginMethod, setLoginMethod] = useState<"github" | "credentials">(
     "credentials",
@@ -13,7 +13,7 @@ export function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent): void => {
     e.preventDefault();
     setError("");
 

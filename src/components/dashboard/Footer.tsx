@@ -1,7 +1,7 @@
 import React from "react";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 
-export function Footer() {
+export function Footer(): React.JSX.Element {
   const currentYear = new Date().getFullYear();
 
   return (
