@@ -229,14 +229,6 @@ const mockRepositories: Repository[] = [
 ];
 
 export function VagasAggregatorPage(): React.JSX.Element {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      const storedTheme = localStorage.getItem("darkMode");
-      return storedTheme === null ? true : storedTheme === "true";
-    }
-    return true;
-  });
-
   const [activeTab, setActiveTab] = useState<"overview" | "repositories">(
     "overview",
   );
@@ -311,7 +303,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
-      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header />
 
       <main className="w-full px-6 py-8 flex-1">
         <div className="max-w-full mx-auto">
@@ -320,14 +312,14 @@ export function VagasAggregatorPage(): React.JSX.Element {
             <div className="flex items-center space-x-4">
               <Link
                 to="/dashboard"
-                className="flex items-center space-x-2 text-blue-500 hover:text-blue-600 transition-colors"
+                className="flex items-center space-x-2 text-green-500 hover:text-green-600 transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span>Back to Dashboard</span>
               </Link>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
               <div className="flex items-center space-x-2">
-                <Briefcase className="w-6 h-6 text-blue-500" />
+                <Briefcase className="w-6 h-6 text-green-500" />
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Vagas Aggregator - API BR
                 </h1>
@@ -343,7 +335,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
                   onClick={() => setActiveTab("overview")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                     activeTab === "overview"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -356,7 +348,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
                   onClick={() => setActiveTab("repositories")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                     activeTab === "repositories"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -379,7 +371,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                 <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                    <Briefcase className="w-5 h-5 text-blue-500" />
+                    <Briefcase className="w-5 h-5 text-green-500" />
                     <span>Vacancies Overview</span>
                   </h3>
                 </div>
@@ -562,7 +554,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
               <div className="flex justify-end">
                 <button
                   onClick={() => setShowAddForm(true)}
-                  className="flex items-center space-x-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                   <span>Add Repository</span>
@@ -601,7 +593,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
                               owner: e.target.value,
                             }))
                           }
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                           placeholder="e.g., frontendbr"
                         />
                       </div>
@@ -618,7 +610,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
                               name: e.target.value,
                             }))
                           }
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                           placeholder="e.g., vagas"
                         />
                       </div>
@@ -635,7 +627,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
                             description: e.target.value,
                           }))
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-hidden focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         rows={3}
                         placeholder="Brief description of the repository"
                       />
@@ -651,7 +643,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
                             onClick={() => handleLabelToggle(label, true)}
                             className={`px-3 py-1 text-sm rounded-full transition-colors ${
                               newRepo.labels.includes(label)
-                                ? "bg-blue-500 text-white"
+                                ? "bg-green-500 text-white"
                                 : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
                             }`}
                           >
@@ -670,7 +662,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
                       <button
                         onClick={handleAddRepository}
                         disabled={!newRepo.owner || !newRepo.name}
-                        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         Add Repository
                       </button>
@@ -683,7 +675,7 @@ export function VagasAggregatorPage(): React.JSX.Element {
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                 <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
                   <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                    <Building className="w-5 h-5 text-blue-500" />
+                    <Building className="w-5 h-5 text-green-500" />
                     <span>Repository Management</span>
                     <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                       ({repositories.length} repositories)

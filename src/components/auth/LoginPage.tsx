@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Activity, Mail, Lock } from "lucide-react";
 import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { mockAuth } from "../../lib/auth";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function LoginPage(): React.JSX.Element {
   const navigate = useNavigate();
@@ -29,10 +30,11 @@ export function LoginPage(): React.JSX.Element {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
+    <div className="relative min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
+      <ThemeToggle />
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
         <div className="text-center">
-          <Activity className="mx-auto h-12 w-12 text-blue-500" />
+          <Activity className="mx-auto h-12 w-12 text-green-500" />
           <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
             Sign in to your account
           </h2>
@@ -44,7 +46,7 @@ export function LoginPage(): React.JSX.Element {
               onClick={() => setLoginMethod("credentials")}
               className={`px-4 py-2 rounded-md flex items-center space-x-2 ${
                 loginMethod === "credentials"
-                  ? "bg-blue-500 text-white"
+                  ? "bg-green-500 text-white"
                   : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
               }`}
             >
@@ -55,7 +57,7 @@ export function LoginPage(): React.JSX.Element {
               onClick={() => setLoginMethod("github")}
               className={`px-4 py-2 rounded-md flex items-center space-x-2 ${
                 loginMethod === "github"
-                  ? "bg-blue-500 text-white"
+                  ? "bg-green-500 text-white"
                   : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
               }`}
             >
@@ -85,7 +87,7 @@ export function LoginPage(): React.JSX.Element {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs focus:outline-hidden focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs focus:outline-hidden focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -101,14 +103,14 @@ export function LoginPage(): React.JSX.Element {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs focus:outline-hidden focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-xs focus:outline-hidden focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     placeholder="Enter your password"
                   />
                 </div>
                 <div className="text-right">
                   <Link
                     to="/forgot-password"
-                    className="text-sm text-blue-500 hover:text-blue-600"
+                    className="text-sm text-green-500 hover:text-green-600"
                   >
                     Forgot your password?
                   </Link>
@@ -124,7 +126,7 @@ export function LoginPage(): React.JSX.Element {
 
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-xs text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-xs text-sm font-medium text-white bg-green-500 hover:bg-green-600 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
             >
               {loginMethod === "credentials" ? (
                 <>

@@ -188,14 +188,6 @@ const mockIgnoredLeagues: IgnoredLeague[] = [
 ];
 
 export function SportsAgendaPage(): React.JSX.Element {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      const storedTheme = localStorage.getItem("darkMode");
-      return storedTheme === null ? true : storedTheme === "true";
-    }
-    return true;
-  });
-
   const [activeTab, setActiveTab] = useState<"overview" | "ignored-leagues">(
     "overview",
   );
@@ -285,7 +277,7 @@ export function SportsAgendaPage(): React.JSX.Element {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
-      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header />
 
       <main className="w-full px-6 py-8 flex-1">
         <div className="max-w-full mx-auto">
@@ -294,14 +286,14 @@ export function SportsAgendaPage(): React.JSX.Element {
             <div className="flex items-center space-x-4">
               <Link
                 to="/dashboard"
-                className="flex items-center space-x-2 text-blue-500 hover:text-blue-600 transition-colors"
+                className="flex items-center space-x-2 text-green-500 hover:text-green-600 transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span>Back to Dashboard</span>
               </Link>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
               <div className="flex items-center space-x-2">
-                <Trophy className="w-6 h-6 text-blue-500" />
+                <Trophy className="w-6 h-6 text-green-500" />
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Sports Agenda - API BR
                 </h1>
@@ -317,7 +309,7 @@ export function SportsAgendaPage(): React.JSX.Element {
                   onClick={() => setActiveTab("overview")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                     activeTab === "overview"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -330,7 +322,7 @@ export function SportsAgendaPage(): React.JSX.Element {
                   onClick={() => setActiveTab("ignored-leagues")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                     activeTab === "ignored-leagues"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -399,7 +391,7 @@ export function SportsAgendaPage(): React.JSX.Element {
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                 <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                    <Users className="w-5 h-5 text-blue-500" />
+                    <Users className="w-5 h-5 text-green-500" />
                     <span>Teams Overview</span>
                   </h3>
                 </div>

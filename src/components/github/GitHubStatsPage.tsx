@@ -757,14 +757,6 @@ const mockCheckRuns: CheckRun[] = [
 ];
 
 export function GitHubStatsPage(): React.JSX.Element {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      const storedTheme = localStorage.getItem("darkMode");
-      return storedTheme === null ? true : storedTheme === "true";
-    }
-    return true;
-  });
-
   const [activeTab, setActiveTab] = useState<
     | "overview"
     | "issues"
@@ -897,7 +889,7 @@ export function GitHubStatsPage(): React.JSX.Element {
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mb-6">
         <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-            <Icon className="w-5 h-5 text-blue-500" />
+            <Icon className="w-5 h-5 text-green-500" />
             <span>{title}</span>
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
               ({items.length} items)
@@ -981,7 +973,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <a
                       href={item.url}
-                      className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                      className="text-green-500 hover:text-green-600 dark:text-green-400 dark:hover:text-green-300"
                     >
                       <ExternalLink className="w-4 h-4" />
                     </a>
@@ -997,7 +989,7 @@ export function GitHubStatsPage(): React.JSX.Element {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
-      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header />
 
       <main className="w-full px-6 py-8 flex-1">
         <div className="max-w-full mx-auto">
@@ -1006,7 +998,7 @@ export function GitHubStatsPage(): React.JSX.Element {
             <div className="flex items-center space-x-4">
               <Link
                 to="/dashboard"
-                className="flex items-center space-x-2 text-blue-500 hover:text-blue-600 transition-colors"
+                className="flex items-center space-x-2 text-green-500 hover:text-green-600 transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span>Back to Dashboard</span>
@@ -1029,7 +1021,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                   onClick={() => setActiveTab("overview")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap ${
                     activeTab === "overview"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -1042,7 +1034,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                   onClick={() => setActiveTab("issues")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap ${
                     activeTab === "issues"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -1055,7 +1047,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                   onClick={() => setActiveTab("pull-requests")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap ${
                     activeTab === "pull-requests"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -1068,7 +1060,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                   onClick={() => setActiveTab("workflow-runs")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap ${
                     activeTab === "workflow-runs"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -1081,7 +1073,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                   onClick={() => setActiveTab("branches")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap ${
                     activeTab === "branches"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -1094,7 +1086,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                   onClick={() => setActiveTab("check-runs")}
                   className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors whitespace-nowrap ${
                     activeTab === "check-runs"
-                      ? "border-blue-500 text-blue-600 dark:text-blue-400"
+                      ? "border-green-500 text-green-600 dark:text-green-400"
                       : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                   }`}
                 >
@@ -1115,7 +1107,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                   <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
                     <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                      <Activity className="w-5 h-5 text-blue-500" />
+                      <Activity className="w-5 h-5 text-green-500" />
                       <span>API Usage</span>
                     </h2>
                   </div>
@@ -1443,7 +1435,7 @@ export function GitHubStatsPage(): React.JSX.Element {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
               <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                  <Play className="w-5 h-5 text-blue-500" />
+                  <Play className="w-5 h-5 text-green-500" />
                   <span>Workflow Runs</span>
                   <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                     ({mockWorkflowRuns.length} runs)
@@ -1562,7 +1554,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <a
                             href={run.url}
-                            className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                            className="text-green-500 hover:text-green-600 dark:text-green-400 dark:hover:text-green-300"
                           >
                             <ExternalLink className="w-4 h-4" />
                           </a>
@@ -1580,7 +1572,7 @@ export function GitHubStatsPage(): React.JSX.Element {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
               <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                  <GitBranch className="w-5 h-5 text-blue-500" />
+                  <GitBranch className="w-5 h-5 text-green-500" />
                   <span>Branches</span>
                   <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                     ({mockBranches.length} branches)
@@ -1655,7 +1647,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <a
                             href={branch.url}
-                            className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                            className="text-green-500 hover:text-green-600 dark:text-green-400 dark:hover:text-green-300"
                           >
                             <ExternalLink className="w-4 h-4" />
                           </a>
@@ -1673,7 +1665,7 @@ export function GitHubStatsPage(): React.JSX.Element {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
               <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-                  <Shield className="w-5 h-5 text-blue-500" />
+                  <Shield className="w-5 h-5 text-green-500" />
                   <span>Check Runs</span>
                   <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                     ({mockCheckRuns.length} checks)
@@ -1779,7 +1771,7 @@ export function GitHubStatsPage(): React.JSX.Element {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <a
                             href={check.url}
-                            className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                            className="text-green-500 hover:text-green-600 dark:text-green-400 dark:hover:text-green-300"
                           >
                             <ExternalLink className="w-4 h-4" />
                           </a>
