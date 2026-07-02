@@ -226,12 +226,12 @@ export function WebhooksStats(): React.JSX.Element {
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
         <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-            <Activity className="w-5 h-5 text-blue-500" />
+            <Activity className="w-5 h-5 text-green-500" />
             <span>Webhooks Handler Stats</span>
           </h2>
         </div>
         <div className="p-8 text-center">
-          <RefreshCw className="w-8 h-8 text-blue-500 animate-spin mx-auto mb-4" />
+          <RefreshCw className="w-8 h-8 text-green-500 animate-spin mx-auto mb-4" />
           <p className="text-gray-500 dark:text-gray-400">
             Loading webhooks statistics...
           </p>
@@ -246,12 +246,12 @@ export function WebhooksStats(): React.JSX.Element {
         <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-              <Activity className="w-5 h-5 text-blue-500" />
+              <Activity className="w-5 h-5 text-green-500" />
               <span>Webhooks Handler Stats</span>
             </h2>
             <button
               onClick={handleManualRefresh}
-              className="flex items-center space-x-2 px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors"
+              className="flex items-center space-x-2 px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors"
             >
               <RefreshCw className="w-4 h-4" />
               <span>Retry</span>
@@ -276,7 +276,7 @@ export function WebhooksStats(): React.JSX.Element {
       <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
-            <Activity className="w-5 h-5 text-blue-500" />
+            <Activity className="w-5 h-5 text-green-500" />
             <span>Webhooks Handler Stats</span>
             {lastUpdated && (
               <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -298,7 +298,7 @@ export function WebhooksStats(): React.JSX.Element {
             <button
               onClick={handleManualRefresh}
               disabled={loading}
-              className="flex items-center space-x-2 px-3 py-1 bg-blue-500 hover:bg-blue-600 disabled:opacity-50 text-white rounded-md transition-colors min-w-[100px]"
+              className="flex items-center space-x-2 px-3 py-1 bg-green-500 hover:bg-green-600 disabled:opacity-50 text-white rounded-md transition-colors min-w-[100px]"
             >
               <RefreshCw
                 className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}

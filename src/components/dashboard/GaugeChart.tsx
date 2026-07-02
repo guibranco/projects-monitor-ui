@@ -17,11 +17,11 @@ export function GaugeChart({
         <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
           {label}
         </span>
-        <Icon className="w-5 h-5 text-blue-500" />
+        <Icon className="w-5 h-5 text-green-500" />
       </div>
       <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden">
         <div
-          className="absolute top-0 left-0 h-full bg-blue-500 transition-all duration-500"
+          className="absolute top-0 left-0 h-full bg-green-500 transition-all duration-500"
           style={{ width: `${value}%` }}
         />
       </div>

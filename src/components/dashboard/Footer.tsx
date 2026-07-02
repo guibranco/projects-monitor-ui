@@ -14,11 +14,11 @@ export function Footer(): React.JSX.Element {
                 href="https://github.com/guibranco"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-500 transition-colors"
+                className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-500 transition-colors"
               >
                 <img
                   alt="Guilherme Branco Stracini"
-                  className="rounded-full ring-2 ring-blue-500/20 hover:ring-blue-500/40 transition-all"
+                  className="rounded-full ring-2 ring-green-500/20 hover:ring-green-500/40 transition-all"
                   loading="lazy"
                   src="https://guilherme.stracini.com.br/photo.png"
                   width="40"
@@ -38,7 +38,7 @@ export function Footer(): React.JSX.Element {
                 href="https://github.com/guibranco/projects-monitor-ui"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-500 transition-colors group"
+                className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-500 transition-colors group"
               >
                 <GitHubIcon className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 <div className="flex flex-col items-start">
