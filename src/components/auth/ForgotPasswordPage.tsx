@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Activity, Mail, ArrowLeft } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function ForgotPasswordPage(): React.JSX.Element {
   const [email, setEmail] = useState("");
@@ -22,10 +23,11 @@ export function ForgotPasswordPage(): React.JSX.Element {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
+      <div className="relative min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
+        <ThemeToggle />
         <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
           <div className="text-center">
-            <Activity className="mx-auto h-12 w-12 text-blue-500" />
+            <Activity className="mx-auto h-12 w-12 text-green-500" />
             <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
               Check your email
             </h2>
@@ -36,7 +38,7 @@ export function ForgotPasswordPage(): React.JSX.Element {
           <div className="mt-4">
             <Link
               to="/"
-              className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Return to login
@@ -48,10 +50,11 @@ export function ForgotPasswordPage(): React.JSX.Element {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
+    <div className="relative min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
+      <ThemeToggle />
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
         <div className="text-center">
-          <Activity className="mx-auto h-12 w-12 text-blue-500" />
+          <Activity className="mx-auto h-12 w-12 text-green-500" />
           <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
             Reset your password
           </h2>
@@ -84,7 +87,7 @@ export function ForgotPasswordPage(): React.JSX.Element {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-500 focus:outline-hidden focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-500 focus:outline-hidden focus:ring-green-500 focus:border-green-500 sm:text-sm"
                 placeholder="Enter your email"
               />
             </div>
@@ -93,7 +96,7 @@ export function ForgotPasswordPage(): React.JSX.Element {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-xs text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-xs text-sm font-medium text-white bg-green-500 hover:bg-green-600 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
             >
               Send reset link
             </button>
@@ -102,7 +105,7 @@ export function ForgotPasswordPage(): React.JSX.Element {
           <div className="text-center">
             <Link
               to="/"
-              className="text-sm font-medium text-blue-500 hover:text-blue-600"
+              className="text-sm font-medium text-green-500 hover:text-green-600"
             >
               Back to login
             </Link>

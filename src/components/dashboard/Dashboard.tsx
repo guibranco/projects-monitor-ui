@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   AlertTriangle,
@@ -23,18 +23,6 @@ import { mockAuth } from "../../lib/auth";
  */
 export function Dashboard(): React.JSX.Element {
   const navigate = useNavigate();
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      const storedTheme = localStorage.getItem("darkMode");
-      return storedTheme === null ? true : storedTheme === "true";
-    }
-    return true;
-  });
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode);
-    localStorage.setItem("darkMode", isDarkMode.toString());
-  }, [isDarkMode]);
 
   const handleLogout = (): void => {
     mockAuth.logout(() => navigate("/"));
@@ -42,7 +30,7 @@ export function Dashboard(): React.JSX.Element {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
-      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header />
 
       {/* Main Content */}
       <main className="w-full px-6 py-8 flex-1">

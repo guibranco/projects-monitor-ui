@@ -1,21 +1,16 @@
 import React from "react";
 import { Activity, Moon, Sun, User } from "lucide-react";
+import { useTheme } from "@/lib/ThemeContext";
 
-interface HeaderProps {
-  isDarkMode: boolean;
-  setIsDarkMode: (value: boolean) => void;
-}
+export function Header(): React.JSX.Element {
+  const { isDarkMode, setIsDarkMode } = useTheme();
 
-export function Header({
-  isDarkMode,
-  setIsDarkMode,
-}: HeaderProps): React.JSX.Element {
   return (
     <header className="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-10">
       <div className="w-full px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Activity className="w-8 h-8 text-blue-500" />
+            <Activity className="w-8 h-8 text-green-500" />
             <h1 className="text-xl font-bold text-gray-900 dark:text-white">
               Project Monitor
             </h1>
@@ -23,7 +18,7 @@ export function Header({
           <div className="flex items-center space-x-4">
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
-              className="relative w-16 h-8 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="relative w-16 h-8 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300 focus:outline-hidden focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
               aria-label="Toggle dark mode"
             >
               <div
