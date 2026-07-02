@@ -40,7 +40,7 @@ jobs:
         id: gitversion
         uses: gittools/actions/gitversion/execute@v4.5.0
         with:
-          useConfigFile: true
+          configFilePath: GitVersion.yml
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
